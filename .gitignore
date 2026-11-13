@@ -1,0 +1,10 @@
+credenciais.txt
+
+target/
+.idea/
+*.iml
+.vscode/
+.settings/
+.classpath
+.project
+credenciais.txt

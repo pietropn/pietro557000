@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Trecho</title>
+    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}">
+</head>
+<body>
+<main>
+    <nav class="menu">
+        <a th:href="@{/}" href="#">Início</a> |
+        <a th:href="@{/bairros}" href="#">Bairros</a> |
+        <a th:href="@{/trechos}" href="#">Trechos</a> |
+        <a th:href="@{/leituras}" href="#">Leituras</a>
+    </nav>
+
+    <h1 th:text="${trecho.id == null} ? 'Novo trecho' : 'Alterar trecho'">Novo trecho</h1>
+
+    <form class="formulario" th:action="@{/trechos/salvar}" th:object="${trecho}" method="post">
+        <input type="hidden" th:field="*{id}">
+
+        <div class="campo">
+            <label for="logradouro">Logradouro:</label>
+            <input type="text" th:field="*{logradouro}" size="40">
+            <span class="erro-campo" th:errors="*{logradouro}">erro</span>
+        </div>
+
+        <div class="campo">
+            <label for="bairroId">Bairro:</label>
+            <select th:field="*{bairroId}">
+                <option value="">Selecione...</option>
+                <option th:each="b : ${bairros}" th:value="${b.id}" th:text="${b.nome}">Vila Esperança</option>
+            </select>
+            <span class="erro-campo" th:errors="*{bairroId}">erro</span>
+        </div>
+
+        <div class="campo">
+            <label for="tipoCalcada">Tipo de calçada:</label>
+            <select th:field="*{tipoCalcada}">
+                <option value="">Selecione...</option>
+                <option th:each="t : ${tiposCalcada}" th:value="${t}" th:text="${t}">Regular</option>
+            </select>
+            <span class="erro-campo" th:errors="*{tipoCalcada}">erro</span>
+        </div>
+
+        <div class="campo">
+            <label for="altitude">Altitude (m):</label>
+            <input type="text" th:field="*{altitude}" size="10">
+            <span class="erro-campo" th:errors="*{altitude}">erro</span>
+        </div>
+
+        <div class="botoes">
+            <button type="submit">Salvar</button>
+            <a th:href="@{/trechos}" href="#">Cancelar</a>
+        </div>
+    </form>
+</main>
+</body>
+</html>

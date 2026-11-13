@@ -1,0 +1,214 @@
+/* Cidade em Dia de Chuva - estilo das telas (RM 557000) */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    color: #1f2937;
+    background: #f3f5f9;
+    margin: 0;
+    padding: 24px;
+}
+
+main {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #ffffff;
+    border: 1px solid #d5dbe6;
+    border-radius: 6px;
+    padding: 20px 24px 28px;
+}
+
+/* ---------- menu ---------- */
+
+nav.menu {
+    border-bottom: 1px solid #d5dbe6;
+    padding-bottom: 10px;
+    margin-bottom: 16px;
+}
+
+a {
+    color: #1d4ed8;
+}
+
+a:hover {
+    color: #1e3a8a;
+}
+
+h1 {
+    font-size: 22px;
+    color: #1f3864;
+    margin: 0 0 12px;
+}
+
+.novo {
+    display: inline-block;
+    margin-bottom: 12px;
+    font-weight: bold;
+}
+
+/* ---------- mensagens ---------- */
+
+.mensagem,
+.erro {
+    padding: 10px 12px;
+    border-radius: 4px;
+    margin-bottom: 14px;
+    border: 1px solid;
+}
+
+.mensagem {
+    background: #e8f5e9;
+    border-color: #81c784;
+    color: #1b5e20;
+}
+
+.erro {
+    background: #fdecea;
+    border-color: #e57373;
+    color: #8a1c1c;
+}
+
+/* ---------- tabelas ---------- */
+
+table.lista {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table.lista th,
+table.lista td {
+    border: 1px solid #8eaadb;
+    padding: 8px 10px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+table.lista thead th {
+    background: #1f3864;
+    color: #ffffff;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+table.lista tbody tr:nth-child(even) {
+    background: #f4f7fc;
+}
+
+table.lista tbody tr:hover {
+    background: #e3ebf8;
+}
+
+table.lista td.numero,
+table.lista th.numero {
+    text-align: right;
+}
+
+table.lista td.vazio {
+    text-align: center;
+    color: #6b7280;
+    font-style: italic;
+    padding: 18px;
+}
+
+/* coluna Acoes: link Editar + botao Excluir lado a lado */
+
+table.lista td.acoes {
+    white-space: nowrap;
+    width: 1%;
+}
+
+table.lista td.acoes form {
+    display: inline;
+    margin-left: 8px;
+}
+
+button.excluir {
+    font: inherit;
+    padding: 3px 10px;
+    border: 1px solid #b91c1c;
+    border-radius: 4px;
+    background: #ffffff;
+    color: #b91c1c;
+    cursor: pointer;
+}
+
+button.excluir:hover {
+    background: #b91c1c;
+    color: #ffffff;
+}
+
+/* ---------- situacao da leitura (R1) ---------- */
+
+.status {
+    display: inline-block;
+    min-width: 84px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.status-normal {
+    background: #e8f5e9;
+    color: #1b5e20;
+}
+
+.status-atencao {
+    background: #fff4d6;
+    color: #8a5a00;
+}
+
+.status-alerta {
+    background: #fdecea;
+    color: #a31515;
+}
+
+/* ---------- formularios ---------- */
+
+form.formulario .campo {
+    margin-bottom: 12px;
+}
+
+form.formulario label {
+    display: inline-block;
+    min-width: 130px;
+    font-weight: bold;
+}
+
+form.formulario input[type="text"],
+form.formulario input[type="datetime-local"],
+form.formulario select {
+    font: inherit;
+    padding: 4px 6px;
+    border: 1px solid #8eaadb;
+    border-radius: 4px;
+}
+
+.erro-campo {
+    color: #a31515;
+    margin-left: 8px;
+}
+
+form.formulario .botoes {
+    margin-top: 18px;
+}
+
+form.formulario .botoes button {
+    font: inherit;
+    padding: 5px 16px;
+    border: 1px solid #1f3864;
+    border-radius: 4px;
+    background: #1f3864;
+    color: #ffffff;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+form.formulario .botoes button:hover {
+    background: #2f5496;
+}

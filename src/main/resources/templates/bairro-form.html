@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Bairro</title>
+    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}">
+</head>
+<body>
+<main>
+    <nav class="menu">
+        <a th:href="@{/}" href="#">Início</a> |
+        <a th:href="@{/bairros}" href="#">Bairros</a> |
+        <a th:href="@{/trechos}" href="#">Trechos</a> |
+        <a th:href="@{/leituras}" href="#">Leituras</a>
+    </nav>
+
+    <h1 th:text="${bairro.id == null} ? 'Novo bairro' : 'Alterar bairro'">Novo bairro</h1>
+
+    <form class="formulario" th:action="@{/bairros/salvar}" th:object="${bairro}" method="post">
+        <input type="hidden" th:field="*{id}">
+
+        <div class="campo">
+            <label for="nome">Nome:</label>
+            <input type="text" th:field="*{nome}" size="40">
+            <span class="erro-campo" th:errors="*{nome}">erro</span>
+        </div>
+
+        <div class="campo">
+            <label for="zona">Zona:</label>
+            <select th:field="*{zona}">
+                <option value="">Selecione...</option>
+                <option th:each="z : ${zonas}" th:value="${z}" th:text="${z}">Centro</option>
+            </select>
+            <span class="erro-campo" th:errors="*{zona}">erro</span>
+        </div>
+
+        <div class="campo">
+            <label for="populacao">População:</label>
+            <input type="text" th:field="*{populacao}" size="10">
+            <span class="erro-campo" th:errors="*{populacao}">erro</span>
+        </div>
+
+        <div class="botoes">
+            <button type="submit">Salvar</button>
+            <a th:href="@{/bairros}" href="#">Cancelar</a>
+        </div>
+    </form>
+</main>
+</body>
+</html>

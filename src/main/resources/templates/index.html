@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cidade em Dia de Chuva</title>
+    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}">
+</head>
+<body>
+<main>
+    <nav class="menu">
+        <a th:href="@{/}" href="#">Início</a> |
+        <a th:href="@{/bairros}" href="#">Bairros</a> |
+        <a th:href="@{/trechos}" href="#">Trechos</a> |
+        <a th:href="@{/leituras}" href="#">Leituras</a>
+    </nav>
+
+    <h1>Cidade em Dia de Chuva</h1>
+
+    <div class="erro" th:if="${erro}" th:text="${erro}">Registro não encontrado.</div>
+
+    <p>Escolha um cadastro no menu acima.</p>
+</main>
+</body>
+</html>

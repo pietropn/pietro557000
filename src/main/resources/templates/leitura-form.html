@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Leitura</title>
+    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}">
+</head>
+<body>
+<main>
+    <nav class="menu">
+        <a th:href="@{/}" href="#">Início</a> |
+        <a th:href="@{/bairros}" href="#">Bairros</a> |
+        <a th:href="@{/trechos}" href="#">Trechos</a> |
+        <a th:href="@{/leituras}" href="#">Leituras</a>
+    </nav>
+
+    <h1 th:text="${leitura.id == null} ? 'Nova leitura' : 'Alterar leitura'">Nova leitura</h1>
+
+    <form class="formulario" th:action="@{/leituras/salvar}" th:object="${leitura}" method="post">
+        <input type="hidden" th:field="*{id}">
+
+        <div class="campo">
+            <label for="trechoId">Trecho:</label>
+            <select th:field="*{trechoId}">
+                <option value="">Selecione...</option>
+                <option th:each="t : ${trechos}" th:value="${t.id}" th:text="${t.logradouro}">Rua Alta</option>
+            </select>
+            <span class="erro-campo" th:errors="*{trechoId}">erro</span>
+        </div>
+
+        <div class="campo">
+            <label for="dataHora">Data e hora:</label>
+            <input type="datetime-local" th:field="*{dataHora}">
+            <span class="erro-campo" th:errors="*{dataHora}">erro</span>
+        </div>
+
+        <div class="campo">
+            <label for="lamina">Lâmina (cm):</label>
+            <input type="text" th:field="*{lamina}" size="10">
+            <span class="erro-campo" th:errors="*{lamina}">erro</span>
+        </div>
+
+        <div class="botoes">
+            <button type="submit">Salvar</button>
+            <a th:href="@{/leituras}" href="#">Cancelar</a>
+        </div>
+    </form>
+</main>
+</body>
+</html>

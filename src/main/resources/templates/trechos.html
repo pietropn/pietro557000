@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Trechos de calçada</title>
+    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}">
+</head>
+<body>
+<main>
+    <nav class="menu">
+        <a th:href="@{/}" href="#">Início</a> |
+        <a th:href="@{/bairros}" href="#">Bairros</a> |
+        <a th:href="@{/trechos}" href="#">Trechos</a> |
+        <a th:href="@{/leituras}" href="#">Leituras</a>
+    </nav>
+
+    <h1>Trechos de calçada</h1>
+
+    <div class="mensagem" th:if="${mensagem}" th:text="${mensagem}">Trecho salvo com sucesso.</div>
+    <div class="erro" th:if="${erro}" th:text="${erro}">O trecho tem leituras cadastradas e não pode ser excluído.</div>
+
+    <a class="novo" th:href="@{/trechos/novo}" href="#">Novo trecho</a>
+
+    <table class="lista">
+        <thead>
+        <tr>
+            <th>Logradouro</th>
+            <th>Bairro</th>
+            <th>Tipo</th>
+            <th class="numero">Altitude (m)</th>
+            <th>Ações</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="trecho : ${trechos}">
+            <td th:text="${trecho.logradouro}">Rua Alta</td>
+            <td th:text="${trecho.bairroNome}">Jardim das Águas</td>
+            <td th:text="${trecho.tipoCalcada}">Regular</td>
+            <td class="numero" th:text="${trecho.altitude}">755</td>
+            <td class="acoes">
+                <a th:href="@{/trechos/{id}/editar(id=${trecho.id})}" href="#">Editar</a>
+                <form th:action="@{/trechos/{id}/excluir(id=${trecho.id})}" method="post">
+                    <button type="submit" class="excluir">Excluir</button>
+                </form>
+            </td>
+        </tr>
+        <tr th:if="${#lists.isEmpty(trechos)}">
+            <td class="vazio" colspan="5">Nenhum trecho cadastrado.</td>
+        </tr>
+        </tbody>
+    </table>
+</main>
+</body>
+</html>
