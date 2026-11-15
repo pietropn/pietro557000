@@ -26,15 +26,12 @@ public class Trecho {
     @Column(nullable = false, length = 120)
     private String logradouro;
 
-    // Regular, Irregular, Escadaria ou Sem iluminação (guardado como texto, sem enum)
     @Column(name = "tipo_calcada", nullable = false, length = 20)
     private String tipoCalcada;
 
-    // altitude do trecho, em metros
     @Column(nullable = false)
     private Integer altitude;
 
-    // todo trecho pertence a um unico bairro
     @ManyToOne(optional = false)
     @JoinColumn(name = "bairro_id", nullable = false)
     private Bairro bairro;
