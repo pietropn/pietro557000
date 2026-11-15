@@ -18,7 +18,6 @@ public class TrechoMapper {
                 trecho.getBairro().getNome());
     }
 
-    /** Copia os dados do DTO para a entidade (nova ou ja existente). */
     public void copyToEntity(TrechoDTO dto, Trecho trecho, Bairro bairro) {
         trecho.setLogradouro(dto.getLogradouro().trim());
         trecho.setTipoCalcada(dto.getTipoCalcada());

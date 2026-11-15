@@ -27,15 +27,12 @@ public class Leitura {
     @Column(name = "data_hora", nullable = false)
     private LocalDateTime dataHora;
 
-    // lamina de agua, em centimetros
     @Column(nullable = false)
     private Integer lamina;
 
-    // NORMAL, ATENCAO ou ALERTA: calculada pelo service (regra R1), sem enum
     @Column(nullable = false, length = 10)
     private String situacao;
 
-    // toda leitura e de um unico trecho
     @ManyToOne(optional = false)
     @JoinColumn(name = "trecho_id", nullable = false)
     private Trecho trecho;

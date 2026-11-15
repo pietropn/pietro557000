@@ -37,7 +37,6 @@
             <td th:text="${leitura.trechoLogradouro}">Rua do Córrego</td>
             <td class="numero" th:text="${leitura.lamina}">18</td>
             <td>
-                <!-- a situacao vem pronta do service (R1); aqui so escolhemos a cor -->
                 <span class="status status-alerta"
                       th:class="${'status status-' + #strings.toLowerCase(leitura.situacao)}"
                       th:text="${leitura.situacao}">ALERTA</span>

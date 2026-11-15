@@ -36,6 +36,5 @@ public class TrechoDTO {
     @NotNull(message = "O bairro é obrigatório.")
     private Long bairroId;
 
-    // usado somente na lista (nome do bairro do trecho)
     private String bairroNome;
 }

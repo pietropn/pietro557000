@@ -66,7 +66,6 @@ public class TrechoController {
         return "redirect:/trechos";
     }
 
-    /** O formulario precisa da lista de bairros (selecao pelo nome) e dos tipos de calcada. */
     private String formulario(Model model) {
         model.addAttribute("bairros", bairroService.listar());
         model.addAttribute("tiposCalcada", TrechoService.TIPOS_CALCADA);

@@ -14,14 +14,12 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class BairroService {
 
-    /** Valores fixos de zona (guardados como texto, sem enum). */
     public static final List<String> ZONAS = List.of("Centro", "Norte", "Sul", "Leste", "Oeste");
 
     private final BairroRepository bairroRepository;
     private final TrechoRepository trechoRepository;
     private final BairroMapper bairroMapper;
 
-    /** Lista os bairros por nome, em ordem alfabetica. */
     @Transactional(readOnly = true)
     public List<BairroDTO> listar() {
         return bairroRepository.findAllByOrderByNomeAsc().stream()
@@ -34,7 +32,6 @@ public class BairroService {
         return bairroMapper.toDTO(buscarEntidade(id));
     }
 
-    /** Inclui (id nulo) ou altera (id preenchido) um bairro. */
     @Transactional
     public void salvar(BairroDTO dto) {
         Bairro bairro = dto.getId() == null ? new Bairro() : buscarEntidade(dto.getId());
@@ -42,7 +39,6 @@ public class BairroService {
         bairroRepository.save(bairro);
     }
 
-    /** R2: um bairro que tem trechos cadastrados nao pode ser excluido. */
     @Transactional
     public void excluir(Long id) {
         Bairro bairro = buscarEntidade(id);

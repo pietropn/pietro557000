@@ -15,7 +15,6 @@ public class BairroMapper {
                 bairro.getPopulacao());
     }
 
-    /** Copia os dados do DTO para a entidade (nova ou ja existente). */
     public void copyToEntity(BairroDTO dto, Bairro bairro) {
         bairro.setNome(dto.getNome().trim());
         bairro.setZona(dto.getZona());

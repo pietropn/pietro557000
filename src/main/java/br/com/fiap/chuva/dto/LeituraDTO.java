@@ -30,7 +30,6 @@ public class LeituraDTO {
     @NotNull(message = "O trecho é obrigatório.")
     private Long trechoId;
 
-    // usados somente na lista: logradouro do trecho e situacao calculada (R1)
     private String trechoLogradouro;
     private String situacao;
 }

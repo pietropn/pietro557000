@@ -24,7 +24,6 @@ public class Bairro {
     @Column(nullable = false, length = 80)
     private String nome;
 
-    // Centro, Norte, Sul, Leste ou Oeste (guardado como texto, sem enum)
     @Column(nullable = false, length = 10)
     private String zona;
 

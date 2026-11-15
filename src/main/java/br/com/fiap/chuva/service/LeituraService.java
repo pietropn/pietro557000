@@ -15,7 +15,6 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class LeituraService {
 
-    /** P2: limiar de alerta L = 10 + 2 * (557000 % 4) = 10 cm. */
     private static final int LIMIAR_ALERTA = 10;
 
     private static final String NORMAL = "NORMAL";
@@ -26,7 +25,6 @@ public class LeituraService {
     private final TrechoRepository trechoRepository;
     private final LeituraMapper leituraMapper;
 
-    /** Lista as leituras da mais recente para a mais antiga, com o logradouro do trecho. */
     @Transactional(readOnly = true)
     public List<LeituraDTO> listar() {
         return leituraRepository.findAllByOrderByDataHoraDesc().stream()
@@ -39,7 +37,6 @@ public class LeituraService {
         return leituraMapper.toDTO(buscarEntidade(id));
     }
 
-    /** Inclui (id nulo) ou altera (id preenchido) uma leitura, recalculando a situacao (R1). */
     @Transactional
     public void salvar(LeituraDTO dto) {
         Trecho trecho = trechoRepository.findById(dto.getTrechoId())
@@ -55,10 +52,6 @@ public class LeituraService {
         leituraRepository.delete(buscarEntidade(id));
     }
 
-    /**
-     * R1: ALERTA se lamina >= L; ATENCAO se L/2 <= lamina < L; NORMAL se lamina < L/2.
-     * A comparacao com L/2 e feita como 2 * lamina >= L para nao depender de divisao.
-     */
     private String calcularSituacao(int lamina) {
         if (lamina >= LIMIAR_ALERTA) {
             return ALERTA;

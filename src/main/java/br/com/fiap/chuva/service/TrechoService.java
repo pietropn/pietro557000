@@ -16,7 +16,6 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class TrechoService {
 
-    /** Valores fixos de tipo de calcada (guardados como texto, sem enum). */
     public static final List<String> TIPOS_CALCADA =
             List.of("Regular", "Irregular", "Escadaria", "Sem iluminação");
 
@@ -25,7 +24,6 @@ public class TrechoService {
     private final LeituraRepository leituraRepository;
     private final TrechoMapper trechoMapper;
 
-    /** Lista os trechos por logradouro, em ordem alfabetica, com o nome do bairro. */
     @Transactional(readOnly = true)
     public List<TrechoDTO> listar() {
         return trechoRepository.findAllByOrderByLogradouroAsc().stream()
@@ -38,7 +36,6 @@ public class TrechoService {
         return trechoMapper.toDTO(buscarEntidade(id));
     }
 
-    /** Inclui (id nulo) ou altera (id preenchido) um trecho. */
     @Transactional
     public void salvar(TrechoDTO dto) {
         Bairro bairro = bairroRepository.findById(dto.getBairroId())
@@ -48,7 +45,6 @@ public class TrechoService {
         trechoRepository.save(trecho);
     }
 
-    /** R3: um trecho que tem leituras nao pode ser excluido. */
     @Transactional
     public void excluir(Long id) {
         Trecho trecho = buscarEntidade(id);
